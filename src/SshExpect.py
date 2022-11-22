@@ -92,7 +92,7 @@ logging.basicConfig(filename='logs/{}_{}_{}.log'.format(ipAddress, datetime.date
 
 #prompt = ['.*[0-9]\:[0-9][0-9]\:[0-9][0-9]\][\#|\$|\>]\s']
 prompt = '.*[\#|\$|\>|\?|\:]\s$'
-timeout = 8
+timeout = 15
 rawLabel = []
 flg1 = False
 
@@ -114,8 +114,8 @@ while True:
             if rs == '?':
                 input_cmd = input('\nInput Command: ')
                 rs = proc.cmd_sendline(input_cmd, prompt, timeout)
-                if rs != '?':
-                    proc.cmd_sendline('echo ${?}', prompt, timeout)
+                #if rs != '?':
+                    #proc.cmd_sendline('echo ${?}', prompt, timeout)
             else:
                 flg0 = False
                 if lines[i0][:1] != '\t':
@@ -142,13 +142,13 @@ while True:
                             break
                     if cmd_key.upper() == 'E':
                         rs = proc.cmd_sendline(cmd, prompt, timeout)
-                        if rs != '?':
-                            proc.cmd_sendline('echo ${?}', prompt, timeout)
+                        #if rs != '?':
+                            #proc.cmd_sendline('echo ${?}', prompt, timeout)
                     elif len(cmd_key) >= 2:
                         flg0 = True
                         rs = proc.cmd_sendline(cmd_key, prompt, timeout)
-                        if rs != '?':
-                            proc.cmd_sendline('echo ${?}', prompt, timeout)
+                        #if rs != '?':
+                            #proc.cmd_sendline('echo ${?}', prompt, timeout)
                     elif cmd_key.upper() == 'S':
                         pass
                     elif cmd_key.upper() == 'R':
